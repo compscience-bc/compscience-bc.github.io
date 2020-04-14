@@ -3,12 +3,6 @@
 <head>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.2.2/dist/sql-wasm-debug.js'></script>
 <script>
-  config = {
-    locateFile: (filename, prefix) => {
-      console.log(`prefix is : ${prefix}`);
-      return `../dist/${filename}`;
-    }
-  }
   // The `initSqlJs` function is globally provided by all of the main dist files if loaded in the browser.
   // We must specify this locateFile function if we are loading a wasm file from anywhere other than the current html page's folder.
   initSqlJs(config).then(function (SQL) {
