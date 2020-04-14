@@ -1,11 +1,10 @@
 <meta charset="utf8" />
 <html>
-<head>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.2.2/dist/sql-wasm-debug.js'></script>
 <script>
   // The `initSqlJs` function is globally provided by all of the main dist files if loaded in the browser.
   // We must specify this locateFile function if we are loading a wasm file from anywhere other than the current html page's folder.
-  initSqlJs(config).then(function (SQL) {
+  //initSqlJs(config).then(function (SQL) {
     //Create the database
     var db = new SQL.Database();
     // Run a query without reading the results
@@ -23,9 +22,8 @@
       var row = stmt.getAsObject();
       console.log('Here is a row: ' + JSON.stringify(row));
     }
-  });
+
 </script>
-</head>
 
 <body>
   Output is in Javscript console
