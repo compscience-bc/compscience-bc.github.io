@@ -10,6 +10,9 @@
 .banner-text{position: absolute;top: 30%;left: 16.6%;max-width: 820px;}
 .banner-text h4{font-size: 50px;font-weight: bold;line-height: 72px;color: #fff;font-family: 'UBTECH-Bold'}
 .banner-text h5{font-size: 18px;color: #fff;line-height: 30px;padding-top: 30px;}
+.banner-text2{position: absolute;top: 50%;left: 16.6%;max-width: 820px;}
+.banner-text2 h4{font-size: 50px;font-weight: bold;line-height: 72px;color: #fff;font-family: 'UBTECH-Bold'}
+.banner-text2 h5{font-size: 18px;color: #fff;line-height: 30px;padding-top: 30px;}
 .swiper-slide-active .banner-text h4{animation: bannertextleft 1.2s ease both 600ms;}
 .swiper-slide-active .banner-text h5{animation: bannertextleft 1.2s ease both 900ms;}
 @keyframes bannertextleft {0% {transform: translateX(60px);opacity: 0;}100% {transform: translateY(0);opacity: 1;}}
