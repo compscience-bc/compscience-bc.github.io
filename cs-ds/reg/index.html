@@ -2,7 +2,7 @@
 <html class="gr__ubtechedu_com" lang="en"><head>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 	<meta charset="UTF-8">
-	<title>Menu Login</title>
+	<title>Intro | Data Science</title>
 	<meta name="keywords" content="Contact Us">
 	<meta name="description" content="Contact Us">
 	<meta name="author" content="">
@@ -13,11 +13,12 @@
 
 
 
-<link rel="stylesheet" type="text/css" href="page/beginning.css">
-<link rel="stylesheet" href="page/font-awesome.css">
-<link rel="stylesheet" type="text/css" href="page/public.css">
-<script type="text/javascript" async="" src="page/analytics.js"></script><script src="page/hm.js"></script><script src="page/jquery.js"></script>
-<script src="page/public.js"></script>
+<link rel="stylesheet" type="text/css" href="res/beginning.css">
+<link rel="stylesheet" href="res/font-awesome.css">
+<link rel="stylesheet" type="text/css" href="res/public.css">
+<script type="text/javascript" async="" src="res/analytics.js"></script><script src="res/hm.js"></script><script src="res/jquery.js"></script>
+<script src="res/public.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.0.0"> </script>  
 
 
 
@@ -28,7 +29,7 @@
 
 <link rel="Shortcut Icon" href="../home/icon.png">
 <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async="" src="page/js"></script>
+<script async="" src="res/js"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -40,23 +41,23 @@
 var _hmt = _hmt || [];
 (function() {
   //var hm = document.createElement("script");
-  //hm.src = "https://hm.baidu.com/hm.js?9a3a7477fd56bada47d6d51886812128";
+  //hm.src = "";
   //var s = document.getElementsByTagName("script")[0]; 
   //s.parentNode.insertBefore(hm, s);
 })();
 </script>
 
-    <link rel="stylesheet" type="text/css" href="page/gather.css">
-    <link rel="stylesheet" type="text/css" href="page/animate.css">
+    <link rel="stylesheet" type="text/css" href="res/gather.css">
+    <link rel="stylesheet" type="text/css" href="res/animate.css">
 </head>
 <body data-gr-c-s-loaded="true">
 	<!--header-->
 	<div class="Header-wrapper">
         <div class="Header-container clearFix">
             <div class="Header-logo clearFix">
-                <a href="http://www.ubtechedu.com/global/index.html"><img src="page/5d5ca227dfd29.png" alt=""></a>
+                <a href=""><img src="res/5d5ca227dfd29.png" alt=""></a>
             </div>
-            <div class="Header-navclick clearFix ontrue"><span></span></div>
+            <div class="Header-navclick clearFix"><span></span></div>
             <div class="header-lang"><a target="_blank" href="https://ub.ac.id/">DS</a></div>
             <div class="Header-navbarbox" style="display: block;">
                 <div class="Header-navbar">
@@ -74,7 +75,7 @@ var _hmt = _hmt || [];
                                         <ul>
                                             <li>
                                                 <h4><a href="javascript:;">Regresi </a></h4>
-                                                <p><a href="../reg/">Linear</a></p>
+                                                <p><a href="">Linear</a></p>
                                                 <p><a href="">Non-Linear</a></p> 
                                             </li>
                                             <li>
@@ -107,6 +108,9 @@ var _hmt = _hmt || [];
                                </div>
                             </div>
                         </li>
+                        <li>
+                            <a class="Header-Menu" href="../login/">Login</a>
+                        </li>
                         
                     </ul>
                 </div>
@@ -120,35 +124,50 @@ var _hmt = _hmt || [];
     <div class="Container-wrapper">
         <!-- banner -->
         
-        <div>
             <div class="center clearFix">
                 
                 <div class="con-message">
                     <div class="message-title">
-                        <h6>Masukkan User &amp; Password</h6>
+                        <h6>Operasi Dasar | Penjumlahan</h6>
                         <p>
-                            Pastikan User dan Password Anda benar!
+                            Inputkan dua buah bilangan!
                         </p>
                     </div>
+					
+					
+					
                     <form class="message-list" id="yourformid">
                         <div class="message-list1">
-                            <input type="text" name="email" id="contact" placeholder="Email">
+                            <input type="text" name="num1" id="num1" placeholder="Input Bil. ke-1">
                         </div>
                         <div class="message-list2">
-                            <input type="text" name="pwd" id="tel" placeholder="Password">
+                            <input type="text" name="num2" id="num2" placeholder="Input Bil. ke-2">
+                        </div>			
+						
+                       
+                        <div class="message-list1">
+                            <input type="button" id="btn_hitung" value="Hitung" onclick="{
+																																	 
+							  const myA = tf.scalar(document.getElementById('num1').value,'float32');
+							  const myB = tf.scalar(document.getElementById('num2').value,'float32');
+							  const myResult = tf.add(myA, myB);
+							  document.getElementById('myDiv1234').innerHTML = myResult.dataSync(); 																 
+							  
+							 
+							  
+							}">
                         </div>
-                        
-                        
-                        <div class="message-list3">
+						
+						<div class="message-list2">
+							<div id='myDiv1234' style="display: none;">...</div>							
+							<input type="text" value="" name="hasil" id="text_hasil">
+							
                             
                         </div>
-                        <div class="message-list4">
-                            <input type="submit" id="tjtj" value="Login">
-                        </div>
+
                     </form>
                 </div>
-            </div>
-        </div>          
+            </div>        
     </div>
 
 	<!--<form id="yourformid">
@@ -186,7 +205,57 @@ var _hmt = _hmt || [];
                     <div class="Footer-searsubmit" id="ft_btn">Join/Sign Up</div>
                 </div>
             </div>
-            
+            <div class="Footer-navbar clearFix">
+                <ul>
+                    <li>
+                        <div class="Footer-navclick">
+                            <h6>Regresi</h6><i class="Footer-navarr"></i>
+                        </div>
+                        <div class="Footer-navwords">
+							<a href="">Linear</a>
+                            <a href="">Non-Linear</a>         
+						</div>
+                    </li>
+                    <li>
+                        <div class="Footer-navclick">
+                            <h6>Klasifikasi</h6><i class="Footer-navarr"></i>
+                        </div>
+                        <div class="Footer-navwords">
+                            <a href="">2 Kelas (Binary Classification)</a>
+							<a href="">> 2 Kelas (Multi-Class)</a>							
+						</div>
+                    </li>
+                    <li>
+                        <div class="Footer-navclick">
+                            <h6>Clustering</h6><i class="Footer-navarr"></i>
+                        </div>
+                        <div class="Footer-navwords">
+                            <a href="">Hard Clustering</a>
+                            <a href="" target="_blank">Hierarchical Clustering </a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="Footer-navclick">
+                            <h6>Analisis Hasil</h6><i class="Footer-navarr"></i>
+                        </div>
+                        <div class="Footer-navwords">
+                            <a href="" target="_blank">Pola Data</a>
+                            <a href="">Kecenderungan Hasil</a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="Footer-navclick">
+                            <h6>Tentang Kami</h6><i class="Footer-navarr"></i>
+                        </div>
+                        <div class="Footer-navwords">
+                            <a href="">Contact Us</a>
+                            <a href="" target="_blank">Terms of use</a>
+                            <a href="" target="_blank">Privacy Agreement</a>
+                        </div>
+                    </li>
+                    
+                </ul>
+            </div>
             <div class="Footer-bottom">
                 <p>Copyright © 2020 edUBig | Pelatihan Data Science &nbsp;<a target="_blank" href="ub.ac.id"></a>&nbsp; </p>
             </div>
@@ -213,11 +282,25 @@ var _hmt = _hmt || [];
                 }
             });
         });
+		
+		$('#btn_hitung').click(function () {
+				//alert("Please fill in YOUR EMAIL ADDRESS!");
+				//if(e.keyCode == 13) {
+				//document.getElementById('myDiv12345').innerHTML = '434'; 	
+				//var get_val = document.getElementById('myDiv1234').innerHTML;
+				//alert(get_val);
+				//$('#text_hasil').text($(get_val).val());
+				$('#text_hasil').val($('#myDiv1234').text());
+				//}
+			  //});
+		});
+		
+		
 </script>
 
 
 	
-	<script type="text/javascript" src="page/wow.js"></script>
+	<script type="text/javascript" src="res/wow.js"></script>
 
 	<script>
 		$('#tjtj').click(function(){
@@ -225,19 +308,23 @@ var _hmt = _hmt || [];
 			if(very==""){
 				alert("Please fill in the verification code!");return false;
 			}*/
+			var	contact=$('#contact').val();
 			var	email=$('#email').val();
-			var	pwd=$('#pwd').val();
+			var	tel=$('#tel').val();
+			var	addr=$('#addr').val();
+			var	content=$('#content').val();
 
-			if(email=="" || pwd==''){alert('Masukkan email dan password Anda!');return false;}
-			//if(pwd==''){alert('Masukkan password Anda!');return false;}
-			if(isNaN(email)|| isNaN(pwd)){alert('Please fill in the correct contact information!');return false;}
+			if(contact==""){alert('Please fill in your name!');return false;}
+			if(tel==''){alert('Please enter contact information!');return false;}
+			if(isNaN(tel)){alert('Please fill in the correct contact information!');return false;}
 			var myreg = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
 			if(!myreg.test(email))
-			{alert('Masukkan email Anda dengan benar!'); return false; }
+			{alert('Please enter a valid email box!'); return false; }
+			if(addr==""){alert('Please fill in the country/city!');return false;}
+			if(content==""){alert('Please fill in the contents!');return false;}
 
 
 			$.ajax({
-				//url: "/global/index.php/list/mag.html",
 				url: "",
 				type: "POST",
 				//data: {'email':email,'click_name':click_name,'content':content},
@@ -264,6 +351,12 @@ var _hmt = _hmt || [];
         });
         wow.init();
 	</script>
+	
+	
+
+ 
+
+	
 
 
 
