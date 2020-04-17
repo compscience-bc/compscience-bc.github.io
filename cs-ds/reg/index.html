@@ -16,7 +16,9 @@
 <link rel="stylesheet" type="text/css" href="res/beginning.css">
 <link rel="stylesheet" href="res/font-awesome.css">
 <link rel="stylesheet" type="text/css" href="res/public.css">
-<script type="text/javascript" async="" src="res/analytics.js"></script><script src="res/hm.js"></script><script src="res/jquery.js"></script>
+<script type="text/javascript" async="" src="res/analytics.js"></script>
+<!-- <script src="res/hm.js"></script> -->
+<script src="res/jquery.js"></script>
 <script src="res/public.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.0.0"> </script>  
 
@@ -57,7 +59,7 @@ var _hmt = _hmt || [];
             <div class="Header-logo clearFix">
                 <a href=""><img src="res/5d5ca227dfd29.png" alt=""></a>
             </div>
-            <div class="Header-navclick clearFix"><span></span></div>
+            <div class="Header-navclick clearFix ontrue"><span></span></div>
             <div class="header-lang"><a target="_blank" href="https://ub.ac.id/">DS</a></div>
             <div class="Header-navbarbox" style="display: block;">
                 <div class="Header-navbar">
@@ -142,29 +144,104 @@ var _hmt = _hmt || [];
                         </div>
                         <div class="message-list2">
                             <input type="text" name="num2" id="num2" placeholder="Input Bil. ke-2">
-                        </div>			
+                        </div>							
+                      
 						
-                       
-                        <div class="message-list1">
-                            <input type="button" id="btn_hitung" value="Hitung" onclick="{
+						<div id='mymyDiv1234' style="display: none;">...</div>
+						<div class="Footer-wrapper2">
+						<div class="Footer-container2 clearFix">
+                        <div class="Footer-search">
+							<div class="Footer-searwords">
+								<input type="text" style="font-size:20px; color:black; background-color:white;" name="text_hasil" id="text_hasil" placeholder="__">
+								<div class="Footer-searsubmit" style="color:white; background-color:black;" id="btn_hitung" onclick="{
 																																	 
 							  const myA = tf.scalar(document.getElementById('num1').value,'float32');
 							  const myB = tf.scalar(document.getElementById('num2').value,'float32');
 							  const myResult = tf.add(myA, myB);
-							  document.getElementById('myDiv1234').innerHTML = myResult.dataSync(); 																 
-							  
-							 
-							  
-							}">
-                        </div>
-						
-						<div class="message-list2">
-							<div id='myDiv1234' style="display: none;">...</div>							
-							<input type="text" value="" name="hasil" id="text_hasil">
-							
-                            
-                        </div>
+							  document.getElementById('mymyDiv1234').innerHTML = myResult.dataSync(); 																 
+							}">Hitung</div>
+							</div>
+						</div>
+						</div>
+						</div>
 
+                    </form>
+                </div>
+            </div>        
+   
+        <!-- banner -->
+        
+            <div class="center clearFix">
+                
+                <div class="con-message">
+                    <div class="message-title">
+                        <h6>Latihan Koding | Penjumlahan</h6>
+                        <p>
+                            Ubah kode program berikut dan jalankan!
+                        </p>
+                    </div>
+					
+					
+					
+                    <form class="message-list" id="yourformid">
+					    
+                        <div >
+                            <textarea id="myTextarea1234" style="font-size:12px; color:white; background-color:black; width:100%;" rows="2" onclick="{
+							  if (myOnce1234){
+								 myTextGrow('myTextarea1234', 'myDiv1234Code')
+								 document.getElementById('myUpdate1234').style.visibility = 'visible'
+								 myOnce1234 = false
+							  }
+							}" wrap="off">Klik disini untuk Latihan Koding | Penjumlahan.
+							</textarea>
+							
+							
+                           
+							
+                        </div>
+		
+						
+                       
+						<div class="message-list4"  style="display: none;">
+						 <div id="myDiv1234Code"> 
+<input id="myButton1234" type="button" value="Use GPU math" style="visibility:hidden;" onclick="{
+                                                                                                                                 
+  //const myA =  tf.scalar(6.1434, 'float32')
+  const myA = tf.tensor1d([10,20,30], 'int32')
+  const myB = tf.scalar(2.1, 'float32')
+  const myResult = tf.add(myA, myB);
+  //document.getElementById('myDiv1234').innerHTML = myResult.dataSync()[0].toFixed(2)  
+  
+  let myArray = Array.from(myResult.dataSync());
+  let result2 = myArray.map(a => a.toFixed(2));
+  document.getElementById('myDiv1234').innerHTML = result2 
+                                                                 
+}"><br><br>
+
+</div>
+						
+						 </div>
+						 
+						<div id='myDiv1234' style="display: none;">...</div>							
+						<div class="Footer-search">
+							<div class="Footer-searwords">
+								<input type="text" style="font-size:20px; color:black;" name="text_hasil2" id="text_hasil2" placeholder="__">
+								<div class="Footer-searsubmit" id="myUpdate1234" style="color:black; visibility:hidden;" onclick="{
+								   // first remove first and last line since they are injected
+								  myFred = document.getElementById('myTextarea1234').value.split('\n')
+								  myFred.pop()
+								  myFred.push('')
+								  myFred.shift()
+								  myFred.shift()
+								  myJoe = myFred.join('\n')
+								  document.getElementById('myDiv1234Code').innerHTML =    myJoe 
+								  document.getElementById('myButton1234').click()
+																			 
+								}">Update & Run</div>
+							</div>
+						</div>
+
+						
                     </form>
                 </div>
             </div>        
@@ -262,6 +339,25 @@ var _hmt = _hmt || [];
         </div>
         
     </div>
+	<script>
+		myOnce1234 = true    // so textareas are only clicked once
+		myOnce12345 = true  
+
+		function myTextGrow(myT, myB){
+		   var myCursorStart = document.getElementById(myT).selectionStart
+		   var myCursorEnd = document.getElementById(myT).selectionEnd
+		   myDivName = myB.replace('Code','')
+		   document.getElementById(myT).value = '\x3Cscript src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.0.0"> \x3C/script> \n\n' + document.getElementById(myB).innerHTML 
+		   document.getElementById(myT).value += '<div id=\''+myDivName+'\'>...</div><br>'     
+		   setTimeout(function() {
+			  while (  document.getElementById(myT).clientHeight < document.getElementById(myT).scrollHeight){                                                                                                                                              
+				  document.getElementById(myT).rows += 3; 
+			  } 
+		   }, 100)
+		  document.getElementById(myT).selectionStart = myCursorStart
+		  document.getElementById(myT).selectionEnd = myCursorEnd
+		}  
+	</script>
     <script>
 
         $('#ft_btn').click(function(){
@@ -290,7 +386,19 @@ var _hmt = _hmt || [];
 				//var get_val = document.getElementById('myDiv1234').innerHTML;
 				//alert(get_val);
 				//$('#text_hasil').text($(get_val).val());
-				$('#text_hasil').val($('#myDiv1234').text());
+				$('#text_hasil').val($('#mymyDiv1234').text());
+				//}
+			  //});
+		});
+		
+		$('#myUpdate1234').click(function () {
+				//alert("Please fill in YOUR EMAIL ADDRESS!");
+				//if(e.keyCode == 13) {
+				//document.getElementById('myDiv12345').innerHTML = '434'; 	
+				//var get_val = document.getElementById('myDiv1234').innerHTML;
+				//alert(get_val);
+				//$('#text_hasil').text($(get_val).val());
+				$('#text_hasil2').val($('#myDiv1234').text());
 				//}
 			  //});
 		});
@@ -301,6 +409,7 @@ var _hmt = _hmt || [];
 
 	
 	<script type="text/javascript" src="res/wow.js"></script>
+	
 
 	<script>
 		$('#tjtj').click(function(){
