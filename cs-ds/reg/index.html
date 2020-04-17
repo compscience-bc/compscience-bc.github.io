@@ -20,7 +20,8 @@
 <!-- <script src="res/hm.js"></script> -->
 <script src="res/jquery.js"></script>
 <script src="res/public.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.0.0"> </script>  
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.0.0"> </script> 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js"></script> 
 
 
 
@@ -244,7 +245,78 @@ var _hmt = _hmt || [];
 						
                     </form>
                 </div>
-            </div>        
+            </div> 
+
+		<!-- Koding Utama | Regresi -->
+        
+            <div class="center clearFix">
+                
+                <div class="con-message">
+                    <div class="message-title">
+                        <h6>Latihan Koding Utama | Regresi</h6>
+                        <p>
+                            Ubah kode program berikut dan jalankan!
+                        </p>
+                    </div>
+					
+					
+					
+                    <form class="message-list" id="yourformid">
+					    
+                        <div >
+                            <textarea id="myTextarea1234" style="font-size:12px; color:white; background-color:black; width:100%;" rows="2" onclick="{
+							  if (myOnce1234){
+								 myTextGrow('myTextarea1234', 'myDiv1234Code')
+								 document.getElementById('myUpdate1234').style.visibility = 'visible'
+								 myOnce1234 = false
+							  }
+							}" wrap="off">Klik disini untuk Latihan Koding | Regresi.
+							</textarea>
+							
+							
+                           
+							
+                        </div>
+						
+						<br>
+						<div style="width:100%;">
+						  <canvas id="myChart" width="100%" height="40"></canvas>
+						</div>
+		
+						
+                       
+						<div class="message-list4"  style="display: none;">
+						 <div id="myDiv1234Code"> 
+<input id="myButton1234" type="button" value="Use GPU math" style="visibility:hidden;" onclick="{
+                                                                                                                                 
+  //const myA =  tf.scalar(6.1434, 'float32')
+  const myA = tf.tensor1d([10,20,30], 'int32')
+  const myB = tf.scalar(2.1, 'float32')
+  const myResult = tf.add(myA, myB);
+  //document.getElementById('myDiv1234').innerHTML = myResult.dataSync()[0].toFixed(2)  
+  
+  let myArray = Array.from(myResult.dataSync());
+  let result2 = myArray.map(a => a.toFixed(2));
+  document.getElementById('myDiv1234').innerHTML = result2 
+                                                                 
+}"><br><br>
+
+</div>
+						
+						 </div>
+						 
+						<div id='myDiv1234' style="display: none;">...</div>							
+						<div class="Footer-search">
+							<div class="Footer-searwords">
+								<input type="text" style="font-size:20px; color:black;" name="text_hasil2" id="text_hasil2" placeholder="__">
+								<div class="Footer-searsubmit" id="myUpdate1234" style="color:black;" onclick="train()">Regresi (1 Step)</div>
+							</div>
+						</div>
+
+						
+                    </form>
+                </div>
+            </div> 			
     </div>
 
 	<!--<form id="yourformid">
@@ -339,6 +411,132 @@ var _hmt = _hmt || [];
         </div>
         
     </div>
+	<script>
+  const trainX = [
+    3.3,
+    4.4,
+    5.5,
+    6.71,
+    6.93,
+    4.168,
+    9.779,
+    6.182,
+    7.59,
+    2.167,
+    7.042,
+    10.791,
+    5.313,
+    7.997,
+    5.654,
+    9.27,
+    3.1
+  ];
+  const trainY = [
+    1.7,
+    2.76,
+    2.09,
+    3.19,
+    1.694,
+    1.573,
+    3.366,
+    2.596,
+    2.53,
+    1.221,
+    2.827,
+    3.465,
+    1.65,
+    2.904,
+    2.42,
+    2.94,
+    1.3
+  ];
+
+  const m = tf.variable(tf.scalar(Math.random()));
+  const b = tf.variable(tf.scalar(Math.random()));
+
+  function predict(x) {
+    return tf.tidy(function() {
+      return m.mul(x).add(b);
+    });
+  }
+
+  function loss(prediction, labels) {
+  //subtracts the two arrays & squares each element of the tensor then finds the mean. 
+  const error = prediction.sub(labels).square().mean();
+  return error;
+}
+
+
+  function train() {
+
+    const learningRate = 0.01;
+    const optimizer = tf.train.sgd(learningRate);
+
+      optimizer.minimize(function()  {
+        const predsYs = predict(tf.tensor1d(trainX));
+        console.log(predsYs);
+        stepLoss = loss(predsYs, tf.tensor1d(trainY))
+        console.log(stepLoss.dataSync()[0])
+        return stepLoss;
+      });
+      plot();
+  }
+  const predictionsBefore = predict(tf.tensor1d(trainX));
+
+  async function plot() {
+    let plotData = [];
+
+    for (let i = 0; i < trainY.length; i++) {
+      plotData.push({ x: trainX[i], y: trainY[i] });
+    }
+
+    var ctx = document.getElementById("myChart").getContext("2d");
+
+    var scatterChart = new Chart(ctx, {
+      type: "line",
+      data: {
+        datasets: [
+          {
+            label: "Training Data",
+            showLine: false,
+            data: plotData,
+            fill: false
+          },
+          {
+            label: "Y = "+m.dataSync()[0]+"X + " + b.dataSync()[0],
+            data: [
+              {
+                x: 0,
+                y: b.dataSync()[0]
+              },
+              {
+                x: 11,
+                y: 11 * m.dataSync()[0] + b.dataSync()[0]
+              }
+            ],
+
+            // Changes this dataset to become a line
+            type: "line",
+            borderColor: "red",
+            fill: false
+          }
+        ]
+      },
+      options: {
+        scales: {
+          xAxes: [
+            {
+              type: "linear",
+              position: "bottom"
+            }
+          ]
+        }
+      }
+    });
+  }
+  plot();
+
+</script>
 	<script>
 		myOnce1234 = true    // so textareas are only clicked once
 		myOnce12345 = true  
