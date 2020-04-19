@@ -24,6 +24,19 @@
 
 
 
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-auth.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<!-- <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-analytics.js"></script> -->
+<script src="page/login.js"></script>
+
+
+
+
+
 
 
 
@@ -135,18 +148,30 @@ var _hmt = _hmt || [];
                     </div>
                     <form class="message-list" id="yourformid">
                         <div class="message-list1">
-                            <input type="text" name="email" id="contact" placeholder="Email">
+                            <input type="email" name="email" id="email" placeholder="Email">
                         </div>
                         <div class="message-list2">
-                            <input type="text" name="pwd" id="tel" placeholder="Password">
+                            <input type="password" name="pwd" id="password" placeholder="Password">
                         </div>
                         
                         
-                        <div class="message-list3">
-                            
-                        </div>
+
+
+
                         <div class="message-list4">
-                            <input type="submit" id="tjtj" value="Login">
+						    <div class="Footer-searwords">
+                            <div  class="Footer-searsubmit"  onclick="signin()" id="signin">Sign In</div> 
+							</div>
+                        </div>
+						<div class="message-list4">
+						    <div class="Footer-searwords">
+                             <div  class="Footer-searsubmit"  onclick="signup()"  id="signup">Sign Up</div>
+							</div>
+                        </div>
+						 <div class="message-list4">
+						    <div class="Footer-searwords">
+                            <div  class="Footer-searsubmit"   onclick="signout()"  id="signout">Sign Out</div>
+							</div>
                         </div>
                     </form>
                 </div>
@@ -180,22 +205,75 @@ var _hmt = _hmt || [];
 		</div>
 	</form>-->
 
-	
+	<!-- Footer -->
+    
     <div class="Footer-wrapper">
         <div class="Footer-container clearFix">
+            <!-- <div class="Footer-search" style="visibility: hidden;"> -->
             <div class="Footer-search">
                 <div class="Footer-searwords">
                     <input type="text" name="ft_email" id="ft_email" placeholder="Masukkan Email Anda">
                     <div class="Footer-searsubmit" id="ft_btn">Join/Sign Up</div>
                 </div>
             </div>
-            
+            <div class="Footer-navbar clearFix">
+                <ul>
+                    <li>
+                        <div class="Footer-navclick">
+                            <h6>Regresi</h6><i class="Footer-navarr"></i>
+                        </div>
+                        <div class="Footer-navwords">
+							<a href="">Linear</a>
+                            <a href="">Non-Linear</a>         
+						</div>
+                    </li>
+                    <li>
+                        <div class="Footer-navclick">
+                            <h6>Klasifikasi</h6><i class="Footer-navarr"></i>
+                        </div>
+                        <div class="Footer-navwords">
+                            <a href="">2 Kelas (Binary Classification)</a>
+							<a href="">> 2 Kelas (Multi-Class)</a>							
+						</div>
+                    </li>
+                    <li>
+                        <div class="Footer-navclick">
+                            <h6>Clustering</h6><i class="Footer-navarr"></i>
+                        </div>
+                        <div class="Footer-navwords">
+                            <a href="">Hard Clustering</a>
+                            <a href="" target="_blank">Hierarchical Clustering </a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="Footer-navclick">
+                            <h6>Analisis Hasil</h6><i class="Footer-navarr"></i>
+                        </div>
+                        <div class="Footer-navwords">
+                            <a href="" target="_blank">Pola Data</a>
+                            <a href="">Kecenderungan Hasil</a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="Footer-navclick">
+                            <h6>Tentang Kami</h6><i class="Footer-navarr"></i>
+                        </div>
+                        <div class="Footer-navwords">
+                            <a href="">Contact Us</a>
+                            <a href="" target="_blank">Terms of use</a>
+                            <a href="" target="_blank">Privacy Agreement</a>
+                        </div>
+                    </li>
+                    
+                </ul>
+            </div>
             <div class="Footer-bottom">
-                <p>Copyright © 2020 edUBig | Pelatihan Data Science &nbsp;<a target="_blank" href="ub.ac.id"></a>&nbsp; </p>
+                <p>Copyright © 2020 edUBig | Pelatihan Data Science&nbsp;<a href="ub.ac.id" target="_blank"></a>&nbsp; </p>
             </div>
         </div>
         
     </div>
+
     <script>
 
         $('#ft_btn').click(function(){
