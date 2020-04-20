@@ -70,8 +70,9 @@ $(function(){
         // 超出设备提示
         var rberme = sessionStorage['rberme'] || '';
         if( window_width >= 2000 && rberme==''){
-            sessionStorage['rberme'] = 'www.yisiy.com';
-            var wthint = "您的显示设备已超出设计范围！为了布局美观，采取居中排版！确定吗？";
+            //sessionStorage['rberme'] = 'www.yisiy.com';
+			sessionStorage['rberme'] = '';
+            var wthint = "Resizing tampilan Anda telah melampaui cakupan responsive desain! Klik OK Untuk menjaga tata letak tampilan agar tetap bagus, Setuju?";
             if (window.confirm(wthint)) {sessionStorage['rberme'] = 'winter';$("body").addClass("body-maxwidth");} else { return; }
         }
         if(rberme=='winter'){$("body").addClass("body-maxwidth");}
